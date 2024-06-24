@@ -22,6 +22,17 @@ services:
     ports:
       - "5001:5000"
 
+  quay:
+    image: "registry:2.8.3"
+    container_name: "quay"
+    restart: "always"
+    volumes:
+      - "/etc/localtime:/etc/localtime"
+      - "./quay/data:/var/lib/registry"
+      - "./quay/config.yml:/etc/docker/registry/config.yml"
+    ports:
+      - "5002:5000"
+
   gcr:
     image: "registry:2.8.3"
     container_name: "gcr"
